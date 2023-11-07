@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import "./App.css";
 import Page from "./components/Page";
+import { ThemaContext } from "./context/ThemaContext";
 
-function App() {
+export default function App() {
   const [isDark, setIsDark] = useState(false);
-  return <Page isDark={isDark} toggleThema={() => setIsDark(!isDark)} />;
+  return (
+    <ThemaContext.Provider
+      value={{
+        isDark,
+        setIsDark,
+      }}
+    >
+      <Page />
+    </ThemaContext.Provider>
+  );
 }
-
-export default App;
